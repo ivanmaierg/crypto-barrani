@@ -14,11 +14,14 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "proxy": "node proxy/server.js ",
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
     "postinstall": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
@@ -27,18 +30,38 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "1.0.15",
+    "@chakra-ui/react": "1.6.8",
+    "@chakra-ui/theme-tools": "1.2.1",
+    "@emotion/react": "11.4.1",
+    "@emotion/styled": "11.3.0",
+    "@react-theming/storybook-addon": "1.1.1",
+    "@reduxjs/toolkit": "1.6.1",
+    "@snek-at/storybook-addon-chakra-ui": "1.0.0-beta.1",
+    "@types/express": "4.17.13",
+    "@types/react-redux": "7.1.18",
+    "cors-anywhere": "0.4.4",
+    "express": "4.17.1",
+    "framer-motion": "4.1.17",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-redux": "7.2.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
     "@types/node": "14.17.15",
     "@types/react": "17.0.21",
     "@types/react-dom": "17.0.9",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
+    "babel-loader": "^8.2.2",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.32.0",
