@@ -3,8 +3,6 @@ import { TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
 
 export const CurrencyCard = () => (
   <Box
-    backgroundColor="white"
-    boxShadow="l_shadow"
     minWidth="10rem"
     maxWidth="100%"
     w="100%"
@@ -21,7 +19,7 @@ export const CurrencyCard = () => (
         Blue
       </Heading>
     </Box>
-    <Stack spacing={2} backgroundColor="white">
+    <Stack spacing={2}>
       <Box
         display="flex"
         justifyContent="center"

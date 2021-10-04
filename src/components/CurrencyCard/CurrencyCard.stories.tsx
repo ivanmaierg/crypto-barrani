@@ -9,9 +9,11 @@ export default {
 };
 
 const Template = (args: any) => (
-  <Box w="50%">
+  <Box w="20rem">
     <CurrencyCard {...args} />
   </Box>
 );
 
-export const Default = Template.bind({});
+export const Light = Template.bind({});
+
+export const Dark = Template.bind({});

@@ -34,5 +34,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "server.js"  ]
+, "server.js", "src/hooks/useThemeStyles.js"  ]
 }

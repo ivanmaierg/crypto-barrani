@@ -10,13 +10,10 @@ export const Main = () => (
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      borderBottom="1px solid"
-      borderColor="l_border_blue"
       width="100%"
-      backgroundColor="white"
       py="5rem"
     >
-      <Heading color="l_text_blue_strong">Arg Analytics</Heading>
+      <Heading>Arg Analytics</Heading>
       <Text>
         Obtene las diferentes cotizaciones del dólar, euro, reservas, evolucion
         y riesgo pais.

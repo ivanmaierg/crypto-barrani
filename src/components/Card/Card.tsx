@@ -3,10 +3,8 @@ import React from 'react';
 
 export const Card = () => (
   <Box
-    backgroundColor="white"
     width="100%"
     borderRadius="md"
-    boxShadow="md"
     display="block"
     flexDirection="column"
     m="auto"
