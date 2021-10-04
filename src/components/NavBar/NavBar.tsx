@@ -1,15 +1,20 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import React from 'react';
 import Link from 'next/link';
-import { Text, HStack, Link as ChakraLink } from '@chakra-ui/react';
+import {
+  Text,
+  HStack,
+  Link as ChakraLink,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 interface Props {}
 
 export const NavBar: React.FC = (props: Props) => {
+  const color = useColorModeValue(`light.text_primary`, `dark.text_primary`);
   const router = useRouter();
   const path = router.asPath;
-  console.log(path);
   const route1 = {
     href: `/`,
     children: `Home`,
@@ -31,7 +36,7 @@ export const NavBar: React.FC = (props: Props) => {
         <Link key={el.children} href={el.href} passHref>
           <ChakraLink p={5} borderRadius={5}>
             <Text
-              color="l_text_blue_strong"
+              color={color}
               style={
                 path === el.href
                   ? {

@@ -1,23 +1,30 @@
 import { Header } from '@/components/Header/Header';
-import { Flex } from '@chakra-ui/react';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
-export const Layout: React.FC<any> = ({ children }) => (
-  <Flex
-    width="100%"
-    flexDirection="column"
-    justifyContent="center"
-    alignItems="center"
-  >
-    <Header />
+export const Layout: React.FC<any> = ({ children }) => {
+  const bg = useColorModeValue(
+    `light.background_primary`,
+    `dark.background_primary`,
+  );
+  return (
     <Flex
       width="100%"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      boxSizing="border-box"
+      backgroundColor={bg}
     >
-      <>{children}</>
+      <Header />
+      <Flex
+        width="100%"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        boxSizing="border-box"
+      >
+        <>{children}</>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
