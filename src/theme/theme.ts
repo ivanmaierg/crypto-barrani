@@ -9,20 +9,29 @@ const breakpoints = createBreakpoints({
 });
 
 export const myTheme = extendTheme({
+  initialColorMode: `light`,
+  useSystemColorMode: false,
   breakpoints,
   shadows: { l_shadow: `0 15px 50px #e4eeff` },
   colors: {
-    l_blue_background: `#e7f0ff`,
-    l_border_blue: `#cee1ff`,
-    l_secondary_color: `#e9f2ff`,
-    l_strong_blue: `#0060ff`,
-    l_text_blue_strong: `#002358`,
-    l_text_blue_medium: `#264d89`,
-    d_background_dark: `#001b32`,
-    d_background_primary: `#001b44`,
-    d_background_light: `#001b44`,
-    d_text_primary: `white`,
-    d_text_secondary: `#b3d1ff`,
+    light: {
+      background_primary: `white`,
+      background_secondary: `#e7f0ff`,
+      background_tertiary: `#e9f2ff`,
+      border: `#cee1ff`,
+      dark_blue: `#002358`,
+      md_blue: `#264d89`,
+      text_primary: `#002358`,
+      text_secondary: `#264d89`,
+    },
+    dark: {
+      background_primary: `#001b44`,
+      background_secondary: `#001432`,
+      background_tertiary: `#032c6b`,
+      border: `#173e7b`,
+      text_primary: `white`,
+      text_secondary: `#b3d1ff`,
+    },
   },
   styles: {
     global: {
