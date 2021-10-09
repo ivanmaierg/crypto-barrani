@@ -3,13 +3,13 @@ import ButtonColorMode from '../ButtonColorMode/ButtonColorMode';
 // import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 import { NavBar } from '../NavBar/NavBar';
 import { useColorModeValues } from '../../utils/hooks/useColorModeValues';
+import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 
 export const Header = () => {
   const { borderColor } = useColorModeValues();
   return (
     <Flex
       flexDirection="row"
-      alignItems="center"
       justifyContent="space-between"
       w="100%"
       py="5"
@@ -31,8 +31,10 @@ export const Header = () => {
         >
           <h1>Crypto Barrani</h1>
         </Flex>
-        <NavBar />
-        <ButtonColorMode />
+        <Flex display="flex" aligItems="center" justifyContent="center">
+          <NavBar />
+          <HeaderMenu />
+        </Flex>
       </Box>
     </Flex>
   );

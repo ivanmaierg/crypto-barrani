@@ -20,6 +20,7 @@ import {
   Button,
   IconButton,
 } from '@chakra-ui/react';
+import ButtonColorMode from '../ButtonColorMode/ButtonColorMode';
 
 export const HeaderMenu = () => (
   <Menu>
@@ -27,13 +28,36 @@ export const HeaderMenu = () => (
       as={IconButton}
       aria-label="Options"
       icon={<HamburgerIcon />}
-      variant="outline"
+      variant="solid"
+      m="auto"
     />
-    <MenuList>
-      <MenuItem icon={<AddIcon />}>Edit</MenuItem>
-      <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
-      <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
-      <MenuItem icon={<EditIcon />}>Open File...</MenuItem>
+    <MenuList
+      backgroundColor="light.background_secondary"
+      color="light.text_primary"
+      height="fit-content"
+      width="20rem"
+      p="6"
+    >
+      <MenuIcon>
+        <ButtonColorMode />
+      </MenuIcon>
+      <MenuDivider />
+      <MenuItem borderBottom="1px solid" borderColor="light.border">
+        About
+      </MenuItem>
+      <MenuItem borderBottom="1px solid" borderColor="light.border">
+        New Window
+      </MenuItem>
+      <MenuItem
+        borderBottom="1px solid"
+        borderColor="light.border"
+        icon={<RepeatIcon />}
+      >
+        Open Closed Tab
+      </MenuItem>
+      <MenuItem borderBottom="1px solid" borderColor="light.border">
+        Open File...
+      </MenuItem>
     </MenuList>
   </Menu>
 );
