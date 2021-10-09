@@ -1,9 +1,11 @@
+import { blueApi } from '@/services/blueApi';
 import { cryptoApi } from '@/services/cryptoApi';
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
     [cryptoApi.reducerPath]: cryptoApi.reducer,
+    [blueApi.reducerPath]: blueApi.reducer,
   },
 });
 
