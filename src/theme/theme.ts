@@ -1,6 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
-import { Button } from './components';
 
 const breakpoints = createBreakpoints({
   sm: `30em`,
@@ -14,9 +13,6 @@ export const myTheme = extendTheme({
   useSystemColorMode: false,
   breakpoints,
   shadows: { l_shadow: `0 15px 50px #e4eeff` },
-  components: {
-    Button,
-  },
   colors: {
     light: {
       background_primary: `white`,
@@ -36,6 +32,9 @@ export const myTheme = extendTheme({
       text_primary: `white`,
       text_secondary: `#b3d1ff`,
     },
+    blueAccent: `#126bff`,
+    grenAccent: `#5bffa8`,
+    redAccent: `#ff314a`,
   },
   styles: {
     global: (props: any) => ({

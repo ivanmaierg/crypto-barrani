@@ -23,7 +23,7 @@ export const Layout: React.FC<any> = ({ children }) => {
         alignItems="center"
         boxSizing="border-box"
       >
-        <>{children}</>
+        {children}
       </Flex>
     </Flex>
   );
