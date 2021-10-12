@@ -18,15 +18,26 @@ export const Currency = ({ blueInfo }: any) => {
       width="100%"
       boxSizing="border-box"
     >
-      <Button alignSelf="flex-end" onClick={handleToogleCurrency}>
-        {toogle ? `Eur` : `Usd`}
-      </Button>
+      <Flex
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
+        <Text fontSize="3xl" fontWeight="bold">
+          {toogle ? `Eur` : `Usd`}
+        </Text>
+        <Button alignSelf="flex-end" onClick={handleToogleCurrency}>
+          {toogle ? `Eur` : `Usd`}
+        </Button>
+      </Flex>
+
       <Stack w="100%" direction={isMobile} spacing={4} mt="1rem">
         <CurrencyCard title="Oficial" currency={getCurrency().oficial} />
         <CurrencyCard title="Blue" currency={getCurrency().blue} />
       </Stack>
       <Box m={2}>
-        <Text>Last Update: 10/09/2021</Text>
+        <Text fontWeight="bold">Last Update: 10/09/2021</Text>
       </Box>
     </Flex>
   );

@@ -1,6 +1,7 @@
 import { blueApi } from '@/services/blueApi';
 import { cryptoApi } from '@/services/cryptoApi';
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 export const store = configureStore({
   reducer: {
@@ -19,3 +20,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+setupListeners(store.dispatch);

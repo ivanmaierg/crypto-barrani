@@ -16,7 +16,26 @@ export const blueApi = createApi({
     getRisk: builder.query({
       query: () => createRequest(`/blue/risk`),
     }),
+    getDays: builder.query({
+      query: () => createRequest(`/blue/days`),
+    }),
+    getDaysByDid: builder.query({
+      query: (did) => createRequest(`/blue/days/${did}`),
+    }),
+    getOficialHistory: builder.query({
+      query: () => createRequest(`/blue/days/oficial`),
+    }),
+    getBlueHistory: builder.query({
+      query: () => createRequest(`/blue/days/blue`),
+    }),
   }),
 });
 
-export const { useGetBlueQuery, useGetRiskQuery } = blueApi;
+export const {
+  useGetBlueQuery,
+  useGetRiskQuery,
+  useGetDaysQuery,
+  useGetBlueHistoryQuery,
+  useGetOficialHistoryQuery,
+  useGetDaysByDidQuery,
+} = blueApi;

@@ -5,10 +5,15 @@ export default async function handler(
   res: NextApiResponse,
 ): Promise<void> {
   try {
-    const risk = await fetch(
+    let risk = await fetch(
       `https://api-dolar-argentina.herokuapp.com/api/riesgopais`,
     );
-    res.status(200).send(await risk.json());
+    risk = await risk.json();
+    risk = {
+      date: risk.fecha,
+      value: risk.valor,
+    };
+    res.status(200).send(risk);
   } catch (err) {
     const error: Error = new Error(`No available`);
     res.status(400).send(error);

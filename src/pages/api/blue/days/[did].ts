@@ -13,6 +13,12 @@ export default async function handler(
 ) {
   const { did } = req.query;
   try {
+    if (did === `all`) {
+      const days = await getCurrencyData(
+        `${config.base_url_blue}/evolution.json`,
+      );
+      res.status(200).send(days);
+    }
     const days = await getCurrencyData(
       `${config.base_url_blue}/evolution.json?days=${did}`,
     );
