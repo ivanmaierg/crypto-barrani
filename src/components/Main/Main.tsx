@@ -3,13 +3,10 @@ import {
   useGetRiskQuery,
   useGetBlueHistoryQuery,
   useGetOficialHistoryQuery,
-  useGetDaysByDidQuery,
 } from '@/services/blueApi';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { useMobile } from '@/utils/hooks/useMobile';
 import { Flex, Text, Heading, Stack, Skeleton } from '@chakra-ui/react';
-import { useReducer } from 'react';
-
 import { Card } from '../Card/Card';
 import LineChart from '../Charts/LineChart';
 import { Currency } from '../Currency/Currency';
@@ -18,21 +15,20 @@ export const Main = () => {
   const { borderColor } = useColorModeValues();
   const { data: riskInfo, isFetching: isFetchingRisk } = useGetRiskQuery(``);
   const { data: blueInfo, isFetching: isFetchingBlue } = useGetBlueQuery(``);
-  const { data: currencyDays, isFetching: isFetchingCurrencyDays } =
-    useGetDaysByDidQuery(`5`);
+  const { data: currencyBlueDays, isFetching: isFetchingCurrencyBlueDays } =
+    useGetBlueHistoryQuery();
 
-  const numberOfDaysReducer = (state, action) => {
-    switch (action.type) {
-      case `change`:
-        return { state: action.payload };
-      default:
-        return { state: 260 };
-    }
-  };
+  const {
+    data: currencyOficialDays,
+    isFetching: isFetchingCurrencyOficialDays,
+  } = useGetOficialHistoryQuery(``);
+  const isFetchingCurrency =
+    !isFetchingCurrencyBlueDays && !isFetchingCurrencyOficialDays;
 
-  const { isMobile } = useMobile(`(max-width: 480px`, [`column`, `row`]);
-  const [numberOfDays, dispatch] = useReducer(numberOfDaysReducer, 260);
-  console.log(numberOfDays);
+  const { isMobile, mobile } = useMobile(`(max-width: 480px`, [
+    `column`,
+    `row`,
+  ]);
   return (
     <Flex
       width="100%"
@@ -81,9 +77,12 @@ export const Main = () => {
             </>
           )}
         </Skeleton>
-        <Skeleton isLoaded={!isFetchingCurrencyDays} mt="2rem" width="100%">
-          {!isFetchingCurrencyDays && (
-            <LineChart dispatch={dispatch} days={currencyDays} />
+        <Skeleton isLoaded={isFetchingCurrency} mt="2rem" width="100%">
+          {!mobile && isFetchingCurrency && (
+            <LineChart
+              blueHistory={currencyBlueDays}
+              oficialHistory={currencyOficialDays}
+            />
           )}
         </Skeleton>
       </Flex>

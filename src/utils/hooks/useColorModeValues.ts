@@ -26,7 +26,6 @@ export const useColorModeValues = () => {
       textSecondary: `dark.text_secondary`,
     },
   );
-  console.log(`se llamo`);
   return {
     bgPrimary,
     bgSecondary,

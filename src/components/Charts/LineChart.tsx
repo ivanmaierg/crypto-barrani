@@ -1,3 +1,6 @@
+import { getFilterDateCondition } from '@/utils/dates/getFilterDateCondition';
+import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
+import { numberOfDaysReducer } from '@/utils/reducers/numberOfDaysReducer';
 import {
   Flex,
   FormControl,
@@ -5,19 +8,33 @@ import {
   Select,
   Heading,
 } from '@chakra-ui/react';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useReducer, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
-export default function LineChart({ days, dispatch }): ReactElement {
+export default function LineChart({
+  blueHistory,
+  oficialHistory,
+}): ReactElement {
+  const [historyDays, dispatch] = useReducer(numberOfDaysReducer, {
+    state: `monthly`,
+  });
+  const { filterCb } = getFilterDateCondition(historyDays.state);
+  const blueData = blueHistory.filter((day) => filterCb(day));
+  const oficialData = oficialHistory.filter((day) => filterCb(day));
   const data = {
-    labels: ``,
+    labels: blueData.map((day: any) => day.date),
     datasets: [
       {
-        label: `Price In USD`,
-        data: days.map((day) => day.value_buy),
-        fill: false,
-        backgroundColor: `#0071bd`,
-        borderColor: `#0071bd`,
+        label: `Price In USD Blue`,
+        data: blueData.map((day: any) => day.value_buy),
+        backgroundColor: `#5bffa8`,
+        borderColor: `gray`,
+      },
+      {
+        label: `Price In USD Oficial`,
+        data: oficialData.map((day: any) => day.value_buy),
+        backgroundColor: `#ff314a`,
+        borderColor: `gray`,
       },
     ],
   };
@@ -37,8 +54,8 @@ export default function LineChart({ days, dispatch }): ReactElement {
   };
   const handleOnSelect = (e) => {
     const action = {
+      type: e.target.value,
       payload: e.target.value,
-      type: `change`,
     };
     dispatch(action);
     e.preventDefault();
@@ -55,7 +72,7 @@ export default function LineChart({ days, dispatch }): ReactElement {
           >
             <option value="monthly">Mensual</option>
             <option value="yearly">Anual</option>
-            <option value="quarteryearly">4 años</option>
+            <option value="quartearly">4 años</option>
             <option value="all">Todo</option>
           </Select>
         </FormLabel>

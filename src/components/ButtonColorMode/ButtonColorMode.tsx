@@ -1,15 +1,13 @@
 import React from 'react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useColorMode } from '@chakra-ui/react';
-
-import { useColorModeValues } from '../../utils/hooks/useColorModeValues';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 const ButtonColorMode = () => {
-  const { textPrimary } = useColorModeValues();
+  const textColor = useColorModeValue(`dark.textPrimary`, `light.textPrimary`);
   const { colorMode, toggleColorMode } = useColorMode();
-  if (colorMode === `light`)
-    return <MoonIcon color={textPrimary} onClick={toggleColorMode} />;
-  return <SunIcon color={textPrimary} onClick={toggleColorMode} />;
+  if (colorMode === `dark`)
+    return <SunIcon color={textColor} onClick={toggleColorMode} />;
+  return <MoonIcon color={textColor} onClick={toggleColorMode} />;
 };
 
 export default ButtonColorMode;
