@@ -7,7 +7,7 @@ export interface CurrencyData {
 export interface historyCurrencyData {
   date: string;
   source: string;
-  value_selll: number;
+  value_sell: number;
   value_buy: number;
 }
 

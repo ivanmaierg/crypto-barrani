@@ -8,10 +8,11 @@ import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { useMobile } from '@/utils/hooks/useMobile';
 import { Flex, Text, Heading, Stack, Skeleton } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
-import LineChart from '../Charts/LineChart';
+import { LineChart } from '../Charts/LineChart';
 import { Currency } from '../Currency/Currency';
 
 export const Main = () => {
+  let dataIsFetch = false;
   const { borderColor } = useColorModeValues();
   const { data: riskInfo, isFetching: isFetchingRisk } = useGetRiskQuery(``);
   const { data: blueInfo, isFetching: isFetchingBlue } = useGetBlueQuery(``);
@@ -21,14 +22,17 @@ export const Main = () => {
   const {
     data: currencyOficialDays,
     isFetching: isFetchingCurrencyOficialDays,
-  } = useGetOficialHistoryQuery(``);
+  } = useGetOficialHistoryQuery();
+  if (currencyBlueDays !== undefined && currencyOficialDays !== undefined) {
+    dataIsFetch = true;
+  }
   const isFetchingCurrency =
     !isFetchingCurrencyBlueDays && !isFetchingCurrencyOficialDays;
 
-  const { isMobile, mobile } = useMobile(`(max-width: 480px`, [
-    `column`,
-    `row`,
-  ]);
+  const { isMobile, mobile } = useMobile<'row' | 'column'>(
+    `(max-width: 480px`,
+    [`column`, `row`],
+  );
   return (
     <Flex
       width="100%"
@@ -52,39 +56,35 @@ export const Main = () => {
             evolución y riesgo país.
           </Text>
         </Flex>
-        <Skeleton
-          width={{ sm: `90%`, md: `100%` }}
-          isLoaded={!isFetchingBlue && !isFetchingRisk}
-        >
-          {!isFetchingBlue && !isFetchingRisk && (
-            <>
-              <Currency blueInfo={blueInfo} />
-              <Stack w="100%" spacing={4} direction={isMobile}>
-                {!isFetchingRisk && (
-                  <Card title="Riesgo País" value={riskInfo.value} />
-                )}
-                {!isFetchingBlue && (
-                  <Card
-                    title="Brecha Cambiaria"
-                    value={`${(
-                      (blueInfo.usd.oficial.value_sell /
-                        blueInfo.usd.blue.value_sell) *
-                      100
-                    ).toFixed(2)} %`}
-                  />
-                )}
-              </Stack>
-            </>
-          )}
-        </Skeleton>
-        <Skeleton isLoaded={isFetchingCurrency} mt="2rem" width="100%">
-          {!mobile && isFetchingCurrency && (
-            <LineChart
-              blueHistory={currencyBlueDays}
-              oficialHistory={currencyOficialDays}
-            />
-          )}
-        </Skeleton>
+        {!isFetchingBlue && !isFetchingRisk && (
+          <>
+            <Currency blueInfo={blueInfo} />
+            <Stack w="100%" spacing={4} direction={isMobile}>
+              {!isFetchingRisk && (
+                <Card
+                  title="Riesgo País"
+                  value={`${Number(riskInfo.value).toFixed(2)} %`}
+                />
+              )}
+              {!isFetchingBlue && (
+                <Card
+                  title="Brecha Cambiaria"
+                  value={`${(
+                    (blueInfo.usd.oficial.value_sell /
+                      blueInfo.usd.blue.value_sell) *
+                    100
+                  ).toFixed(2)} %`}
+                />
+              )}
+            </Stack>
+          </>
+        )}
+        {!mobile && isFetchingCurrency && (
+          <LineChart
+            blueHistory={currencyBlueDays || []}
+            oficialHistory={currencyOficialDays || []}
+          />
+        )}
       </Flex>
     </Flex>
   );

@@ -1,5 +1,6 @@
 import { Header } from '@/components/Header/Header';
 import { Flex, useColorModeValue } from '@chakra-ui/react';
+
 import React from 'react';
 
 export const Layout: React.FC<any> = ({ children }) => {
@@ -14,6 +15,7 @@ export const Layout: React.FC<any> = ({ children }) => {
       justifyContent="center"
       alignItems="center"
       backgroundColor={bg}
+      transition="background-color 200ms linear"
     >
       <Header />
       <Flex

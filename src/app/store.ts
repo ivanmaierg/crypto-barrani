@@ -5,9 +5,11 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 export const store = configureStore({
   reducer: {
-    [cryptoApi.reducerPath]: cryptoApi.reducer,
     [blueApi.reducerPath]: blueApi.reducer,
+    [cryptoApi.reducerPath]: cryptoApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(blueApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

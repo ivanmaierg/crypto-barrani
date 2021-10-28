@@ -1,5 +1,4 @@
 import { getFilterDateCondition } from '@/utils/dates/getFilterDateCondition';
-import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { numberOfDaysReducer } from '@/utils/reducers/numberOfDaysReducer';
 import {
   Flex,
@@ -8,13 +7,21 @@ import {
   Select,
   Heading,
 } from '@chakra-ui/react';
-import React, { ReactElement, useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import { Line } from 'react-chartjs-2';
+import type { ChartOptions } from 'chart.js';
+import { historyCurrencyData } from '@/types/Blue';
 
-export default function LineChart({
+export interface dataCurrency {
+  blueHistory: historyCurrencyData[];
+  oficialHistory: historyCurrencyData[];
+}
+type LineChartProps = dataCurrency;
+
+export const LineChart: React.FC<LineChartProps> = ({
   blueHistory,
   oficialHistory,
-}): ReactElement {
+}) => {
   const [historyDays, dispatch] = useReducer(numberOfDaysReducer, {
     state: `monthly`,
   });
@@ -38,24 +45,10 @@ export default function LineChart({
       },
     ],
   };
-  const options = {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            type: `linear`,
-            display: true,
-            position: `left`,
-            id: `y-axis-1`,
-          },
-        },
-      ],
-    },
-  };
-  const handleOnSelect = (e) => {
+  const handleOnSelect = (e: React.SyntheticEvent<HTMLSelectElement>) => {
     const action = {
-      type: e.target.value,
-      payload: e.target.value,
+      type: e.currentTarget.value,
+      payload: e.currentTarget.value,
     };
     dispatch(action);
     e.preventDefault();
@@ -79,8 +72,8 @@ export default function LineChart({
       </FormControl>
       <Flex flexDirection="column" w="100%">
         <Heading>Información histórica</Heading>
-        <Line data={data} options={options} />
+        <Line data={data} />
       </Flex>
     </>
   );
-}
+};

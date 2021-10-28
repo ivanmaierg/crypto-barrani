@@ -1,8 +1,8 @@
 import { useMediaQuery } from '@chakra-ui/react';
 
-export const useMobile = (
+export const useMobile = <T>(
   media: string,
-  [mobileStyle, notMobileStyle]: string[],
+  [mobileStyle, notMobileStyle]: T[],
 ) => {
   const [mobile] = useMediaQuery(media);
   const isMobile = mobile ? mobileStyle : notMobileStyle;
