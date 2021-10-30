@@ -15,7 +15,9 @@ export default async function handler(
     const allDays = await getCurrencyData(
       `${config.base_url_blue}/evolution.json`,
     );
-    res.status(200).send(allDays.filter((el) => el.source === `Blue`));
+    res
+      .status(200)
+      .send(allDays.filter((el) => el.source === `Blue`).reverse());
   } catch (err) {
     const error: Error = new Error(`No available`);
     res.status(400).send(error);
