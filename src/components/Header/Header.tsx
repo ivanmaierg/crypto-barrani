@@ -1,5 +1,4 @@
 import { Box, Flex } from '@chakra-ui/react';
-import ButtonColorMode from '../ButtonColorMode/ButtonColorMode';
 // import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 import { NavBar } from '../NavBar/NavBar';
 import { useColorModeValues } from '../../utils/hooks/useColorModeValues';

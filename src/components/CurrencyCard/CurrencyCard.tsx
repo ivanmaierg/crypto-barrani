@@ -22,7 +22,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
   currency,
   title,
 }: CurrencyCardProps) => {
-  const { bgTertiary, borderColor } = useColorModeValues();
+  const { bgTertiary } = useColorModeValues();
   const { value_avg: avg, value_sell: sell, value_buy: buy } = currency;
   return (
     <Box

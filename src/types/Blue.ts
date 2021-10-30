@@ -18,3 +18,8 @@ export interface BlueResponse {
   blue_euro: CurrencyData;
   last_update: string;
 }
+
+export interface countryRisk {
+  fecha: string;
+  valor: number;
+}

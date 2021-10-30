@@ -1,14 +1,15 @@
-import { useGetCryptosQuery } from '@/services/cryptoApi';
+// import { useGetCryptosQuery } from '@/services/cryptoApi';
 import { Box } from '@chakra-ui/react';
-import React, { ReactElement, useState } from 'react';
-import { Layout } from '../layout/layout';
+import React, { ReactElement } from 'react';
+import Layout from '../layout/layout';
 
 export default function Crypto(): ReactElement {
-  const { data: cryptosList, isFetching } = useGetCryptosQuery(``);
-  const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
+  // const { data: cryptosList, isFetching } = useGetCryptosQuery(``);
   return (
     <>
-      <Box>Hola</Box>
+      <Layout>
+        <Box>Hola</Box>
+      </Layout>
     </>
   );
 }

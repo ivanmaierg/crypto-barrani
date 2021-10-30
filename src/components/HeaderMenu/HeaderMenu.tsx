@@ -1,23 +1,12 @@
 import React from 'react';
-import {
-  HamburgerIcon,
-  AddIcon,
-  ExternalLinkIcon,
-  EditIcon,
-  RepeatIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon, RepeatIcon } from '@chakra-ui/icons';
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
   MenuIcon,
-  MenuCommand,
   MenuDivider,
-  Button,
   IconButton,
 } from '@chakra-ui/react';
 import ButtonColorMode from '../ButtonColorMode/ButtonColorMode';

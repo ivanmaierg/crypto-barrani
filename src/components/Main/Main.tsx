@@ -6,13 +6,12 @@ import {
 } from '@/services/blueApi';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { useMobile } from '@/utils/hooks/useMobile';
-import { Flex, Text, Heading, Stack, Skeleton } from '@chakra-ui/react';
+import { Flex, Text, Heading, Stack, StackDirection } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { LineChart } from '../Charts/LineChart';
 import { Currency } from '../Currency/Currency';
 
 export const Main = () => {
-  let dataIsFetch = false;
   const { borderColor } = useColorModeValues();
   const { data: riskInfo, isFetching: isFetchingRisk } = useGetRiskQuery(``);
   const { data: blueInfo, isFetching: isFetchingBlue } = useGetBlueQuery(``);
@@ -23,16 +22,13 @@ export const Main = () => {
     data: currencyOficialDays,
     isFetching: isFetchingCurrencyOficialDays,
   } = useGetOficialHistoryQuery();
-  if (currencyBlueDays !== undefined && currencyOficialDays !== undefined) {
-    dataIsFetch = true;
-  }
   const isFetchingCurrency =
     !isFetchingCurrencyBlueDays && !isFetchingCurrencyOficialDays;
 
-  const { isMobile, mobile } = useMobile<'row' | 'column'>(
-    `(max-width: 480px`,
-    [`column`, `row`],
-  );
+  const { isMobile, mobile } = useMobile<StackDirection>(`(max-width: 480px`, [
+    `column`,
+    `row`,
+  ]);
   return (
     <Flex
       width="100%"

@@ -9,9 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-interface Props {}
-
-export const NavBar: React.FC = (props: Props) => {
+export const NavBar: React.FC = () => {
   const color = useColorModeValue(`light.text_primary`, `dark.text_primary`);
   const router = useRouter();
   const path = router.asPath;

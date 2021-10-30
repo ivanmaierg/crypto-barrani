@@ -3,7 +3,7 @@ import { Flex, useColorModeValue } from '@chakra-ui/react';
 
 import React from 'react';
 
-export const Layout: React.FC<any> = ({ children }) => {
+const Layout = ({ children }: any) => {
   const bg = useColorModeValue(
     `light.background_primary`,
     `dark.background_primary`,
@@ -30,3 +30,4 @@ export const Layout: React.FC<any> = ({ children }) => {
     </Flex>
   );
 };
+export default Layout;

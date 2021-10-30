@@ -27,7 +27,7 @@ export default async function handler(
       },
       lastUpdate: last_update,
     });
-  } catch (err) {
+  } catch (err: any) {
     const error: Error = new Error(err);
     res.status(400).send(error);
   }

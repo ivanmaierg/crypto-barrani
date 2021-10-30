@@ -1,19 +1,25 @@
+import { countryRisk } from '@/types/Blue';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
+export interface ApiResponse {
+  date: string;
+  value: number;
+}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
   try {
-    let risk = await fetch(
+    const risk = await fetch(
       `https://api-dolar-argentina.herokuapp.com/api/riesgopais`,
     );
-    risk = await risk.json();
-    risk = {
-      date: risk.fecha,
-      value: risk.valor,
+    const data: countryRisk = await risk.json();
+    const apiResponse: ApiResponse = {
+      date: data.fecha,
+      value: data.valor,
     };
-    res.status(200).send(risk);
+    res.status(200).send(apiResponse);
   } catch (err) {
     const error: Error = new Error(`No available`);
     res.status(400).send(error);

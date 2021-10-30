@@ -4,10 +4,10 @@ import React from 'react';
 
 import { Card } from './Card';
 
-export default {
-  component: Card,
-  title: `Card`,
-};
+// export default {
+//   component: Card,
+//   title: `Card`,
+// };
 
 const Template = (args: any) => (
   <Box w="50%">

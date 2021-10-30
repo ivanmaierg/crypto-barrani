@@ -3,10 +3,10 @@ import React from 'react';
 
 import { CurrencyCard } from './CurrencyCard';
 
-export default {
-  component: CurrencyCard,
-  title: `CurrencyCard`,
-};
+// export default {
+//   component: CurrencyCard,
+//   title: `CurrencyCard`,
+// };
 
 const Template = (args: any) => (
   <Box w="20rem">

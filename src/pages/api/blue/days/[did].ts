@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { historyCurrencyData } from '@/types/Blue';
-import { config, envVariable } from '@/config/config';
+import { config } from '@/config/config';
 
 async function getCurrencyData(url: string): Promise<historyCurrencyData[]> {
   const latest = await fetch(url);
@@ -25,6 +25,6 @@ export default async function handler(
     res.status(200).send(days);
   } catch (err) {
     const error = new Error(`No available`);
-    res.status(400).send(Error);
+    res.status(400).send(error);
   }
 }

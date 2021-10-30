@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Main } from './Main';
 
-export default {
-  component: Main,
-  title: `Main`,
-};
+// export default {
+//   component: Main,
+//   title: `Main`,
+// };
 
 const Template = (args: any) => <Main {...args} />;
 

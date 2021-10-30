@@ -1,5 +1,8 @@
 import { getFilterDateCondition } from '@/utils/dates/getFilterDateCondition';
-import { numberOfDaysReducer } from '@/utils/reducers/numberOfDaysReducer';
+import {
+  numberOfDaysReducer,
+  ActionTypeDays,
+} from '@/utils/reducers/numberOfDaysReducer';
 import {
   Flex,
   FormControl,
@@ -9,12 +12,15 @@ import {
 } from '@chakra-ui/react';
 import React, { useReducer } from 'react';
 import { Line } from 'react-chartjs-2';
-import type { ChartOptions } from 'chart.js';
 import { historyCurrencyData } from '@/types/Blue';
 
 export interface dataCurrency {
   blueHistory: historyCurrencyData[];
   oficialHistory: historyCurrencyData[];
+}
+interface Action {
+  type: ActionTypeDays;
+  payload: ActionTypeDays;
 }
 type LineChartProps = dataCurrency;
 
@@ -25,7 +31,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   const [historyDays, dispatch] = useReducer(numberOfDaysReducer, {
     state: `monthly`,
   });
-  const { filterCb } = getFilterDateCondition(historyDays.state);
+  const { filterCb } = getFilterDateCondition(historyDays);
   const blueData = blueHistory.filter((day) => filterCb(day));
   const oficialData = oficialHistory.filter((day) => filterCb(day));
   const data = {
@@ -46,7 +52,7 @@ export const LineChart: React.FC<LineChartProps> = ({
     ],
   };
   const handleOnSelect = (e: React.SyntheticEvent<HTMLSelectElement>) => {
-    const action = {
+    const action: Action = {
       type: e.currentTarget.value,
       payload: e.currentTarget.value,
     };
