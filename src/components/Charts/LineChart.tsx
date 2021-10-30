@@ -60,7 +60,7 @@ export const LineChart: React.FC<LineChartProps> = ({
     e.preventDefault();
   };
   return (
-    <>
+    <Flex my="20" w="100%" h="auto" direction="column">
       <FormControl display="flex" justifyContent="start">
         <FormLabel>
           <Select
@@ -80,6 +80,6 @@ export const LineChart: React.FC<LineChartProps> = ({
         <Heading>Información histórica</Heading>
         <Line data={data} />
       </Flex>
-    </>
+    </Flex>
   );
 };

@@ -42,15 +42,20 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         </Heading>
       </Box>
       <Stack mt={4} spacing={4} fontSize="2xl" w="100%">
-        <Stat borderTopRadius="md" overflow="hidden" bgColor={bgTertiary}>
+        <Stat
+          borderTopRadius="md"
+          py="2.5"
+          overflow="hidden"
+          bgColor={bgTertiary}
+        >
           <StatLabel>Compra</StatLabel>
           <StatNumber>ARS {buy}</StatNumber>
         </Stat>
-        <Stat borderRadius="md" bgColor={bgTertiary}>
+        <Stat borderRadius="md" py="2.5" bgColor={bgTertiary}>
           <StatLabel>Promedio</StatLabel>
           <StatNumber>ARS {avg}</StatNumber>
         </Stat>
-        <Stat borderBottomRadius="md" bgColor={bgTertiary}>
+        <Stat borderBottomRadius="md" py="2.5" bgColor={bgTertiary}>
           <StatLabel>Venta</StatLabel>
           <StatNumber>ARS {sell}</StatNumber>
         </Stat>

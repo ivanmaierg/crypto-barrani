@@ -15,7 +15,6 @@ const Layout = ({ children }: any) => {
       justifyContent="center"
       alignItems="center"
       backgroundColor={bg}
-      transition="background-color 200ms linear"
     >
       <Header />
       <Flex
@@ -24,6 +23,7 @@ const Layout = ({ children }: any) => {
         justifyContent="center"
         alignItems="center"
         boxSizing="border-box"
+        px="5"
       >
         {children}
       </Flex>

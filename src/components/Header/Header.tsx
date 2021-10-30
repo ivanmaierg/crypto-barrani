@@ -1,11 +1,13 @@
 import { Box, Flex } from '@chakra-ui/react';
 // import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
+import { useMobile } from '@/utils/hooks/useMobile';
 import { NavBar } from '../NavBar/NavBar';
 import { useColorModeValues } from '../../utils/hooks/useColorModeValues';
-import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 
 export const Header = () => {
   const { borderColor } = useColorModeValues();
+
+  const { mobile } = useMobile(`(max-width: 480px`, []);
   return (
     <Flex
       flexDirection="row"
@@ -23,7 +25,7 @@ export const Header = () => {
         justifyContent="space-between"
       >
         <Flex
-          fontSize="30"
+          fontSize={mobile ? `20` : `30`}
           fontWeight="bold"
           justifyContent="center"
           alignItems="center"
@@ -32,7 +34,6 @@ export const Header = () => {
         </Flex>
         <Flex display="flex" aligItems="center" justifyContent="center">
           <NavBar />
-          <HeaderMenu />
         </Flex>
       </Box>
     </Flex>

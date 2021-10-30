@@ -1,7 +1,13 @@
 import { useMobile } from '@/utils/hooks/useMobile';
-import { Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Stack,
+  Text,
+  StackDirection,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
-import type { StackDirection } from '@chakra-ui/react';
 import { CurrencyCard } from '../CurrencyCard/CurrencyCard';
 
 export const Currency = ({ blueInfo }: any) => {

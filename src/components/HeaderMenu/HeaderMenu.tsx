@@ -11,9 +11,10 @@ import {
 } from '@chakra-ui/react';
 import ButtonColorMode from '../ButtonColorMode/ButtonColorMode';
 
-export const HeaderMenu = () => (
+export const HeaderMenu = ({ mobile }: any) => (
   <Menu>
     <MenuButton
+      display={mobile ? `none` : `flex`}
       as={IconButton}
       aria-label="Options"
       icon={<HamburgerIcon />}
@@ -21,6 +22,7 @@ export const HeaderMenu = () => (
       m="auto"
     />
     <MenuList
+      display={mobile ? `flex` : `none`}
       backgroundColor="light.background_secondary"
       color="light.text_primary"
       height="fit-content"

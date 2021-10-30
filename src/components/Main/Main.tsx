@@ -22,8 +22,9 @@ export const Main = () => {
     data: currencyOficialDays,
     isFetching: isFetchingCurrencyOficialDays,
   } = useGetOficialHistoryQuery();
-  const isFetchingCurrency =
+  const isFetchingCurrency: boolean =
     !isFetchingCurrencyBlueDays && !isFetchingCurrencyOficialDays;
+  const isFetchingBlueAndRisk: boolean = !isFetchingBlue && !isFetchingRisk;
 
   const { isMobile, mobile } = useMobile<StackDirection>(`(max-width: 480px`, [
     `column`,
@@ -36,7 +37,7 @@ export const Main = () => {
       flexDirection="column"
       borderTop="1px solid"
       borderColor={borderColor}
-      marginTop="4rem"
+      mt="20"
     >
       <Flex
         alignItems="center"
@@ -52,28 +53,29 @@ export const Main = () => {
             evolución y riesgo país.
           </Text>
         </Flex>
-        {!isFetchingBlue && !isFetchingRisk && (
-          <>
+        {isFetchingBlueAndRisk && (
+          <Flex w="100%" direction="column">
             <Currency blueInfo={blueInfo} />
-            <Stack w="100%" spacing={4} direction={isMobile}>
-              {!isFetchingRisk && (
-                <Card
-                  title="Riesgo País"
-                  value={`${Number(riskInfo.value).toFixed(2)} %`}
-                />
-              )}
-              {!isFetchingBlue && (
-                <Card
-                  title="Brecha Cambiaria"
-                  value={`${(
-                    (blueInfo.usd.oficial.value_sell /
-                      blueInfo.usd.blue.value_sell) *
-                    100
-                  ).toFixed(2)} %`}
-                />
-              )}
+            <Stack
+              w="100%"
+              spacing={4}
+              direction={isMobile}
+              transition="all 2ms"
+            >
+              <Card
+                title="Riesgo País"
+                value={`${Number(riskInfo.value).toFixed(2)} %`}
+              />
+              <Card
+                title="Brecha Cambiaria"
+                value={`${(
+                  (blueInfo.usd.oficial.value_sell /
+                    blueInfo.usd.blue.value_sell) *
+                  100
+                ).toFixed(2)} %`}
+              />
             </Stack>
-          </>
+          </Flex>
         )}
         {!mobile && isFetchingCurrency && (
           <LineChart
