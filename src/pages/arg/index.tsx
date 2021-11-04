@@ -1,8 +1,7 @@
 import { ArgAnalytics } from '@/components/ArgAnalytics/ArgAnalytics';
-import React, { ReactElement } from 'react';
 import Layout from '../layout/layout';
 
-export default function News(): ReactElement {
+export default function Arg() {
   return (
     <Layout>
       <ArgAnalytics />

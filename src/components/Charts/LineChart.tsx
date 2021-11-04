@@ -13,6 +13,7 @@ import {
 import React, { useReducer } from 'react';
 import { Line } from 'react-chartjs-2';
 import { historyCurrencyData } from '@/types/Blue';
+import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 
 export interface dataCurrency {
   blueHistory: historyCurrencyData[];
@@ -31,6 +32,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   const [historyDays, dispatch] = useReducer(numberOfDaysReducer, {
     state: `monthly`,
   });
+  const { bgTertiary } = useColorModeValues();
   const { filterCb } = getFilterDateCondition(historyDays);
   const blueData = blueHistory.filter((day) => filterCb(day));
   const oficialData = oficialHistory.filter((day) => filterCb(day));
@@ -41,13 +43,13 @@ export const LineChart: React.FC<LineChartProps> = ({
         label: `Price In USD Blue`,
         data: blueData.map((day: any) => day.value_buy),
         backgroundColor: `#5bffa8`,
-        borderColor: `gray`,
+        borderColor: `rgb(75, 192, 192)`,
       },
       {
         label: `Price In USD Oficial`,
         data: oficialData.map((day: any) => day.value_buy),
         backgroundColor: `#ff314a`,
-        borderColor: `gray`,
+        borderColor: `#ff314a`,
       },
     ],
   };
@@ -60,8 +62,16 @@ export const LineChart: React.FC<LineChartProps> = ({
     e.preventDefault();
   };
   return (
-    <Flex my="20" w="100%" h="auto" direction="column">
-      <FormControl display="flex" justifyContent="start">
+    <Flex
+      my="20"
+      w="100%"
+      h="auto"
+      direction="column"
+      bg={bgTertiary}
+      p="5"
+      rounded="5"
+    >
+      <FormControl display="flex" justifyContent="start" mb="2">
         <FormLabel>
           <Select
             name="quantity"

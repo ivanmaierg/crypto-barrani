@@ -4,15 +4,13 @@ import {
   useGetBlueHistoryQuery,
   useGetOficialHistoryQuery,
 } from '@/services/blueApi';
-import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { useMobile } from '@/utils/hooks/useMobile';
 import { Flex, Text, Heading, Stack, StackDirection } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { LineChart } from '../Charts/LineChart';
 import { Currency } from '../Currency/Currency';
 
-export const Main = () => {
-  const { borderColor } = useColorModeValues();
+export const ArgAnalytics = () => {
   const { data: riskInfo, isFetching: isFetchingRisk } = useGetRiskQuery(``);
   const { data: blueInfo, isFetching: isFetchingBlue } = useGetBlueQuery(``);
   const { data: currencyBlueDays, isFetching: isFetchingCurrencyBlueDays } =
@@ -31,14 +29,7 @@ export const Main = () => {
     `row`,
   ]);
   return (
-    <Flex
-      width="100%"
-      alignItems="center"
-      flexDirection="column"
-      borderTop="1px solid"
-      borderColor={borderColor}
-      mt="20"
-    >
+    <Flex width="100%" alignItems="center" flexDirection="column">
       <Flex
         alignItems="center"
         flexDirection="column"
@@ -69,8 +60,9 @@ export const Main = () => {
               <Card
                 title="Brecha Cambiaria"
                 value={`${(
-                  (blueInfo.usd.oficial.value_sell /
-                    blueInfo.usd.blue.value_sell) *
+                  ((blueInfo.usd.blue.value_sell -
+                    blueInfo.usd.oficial.value_sell) /
+                    blueInfo.usd.oficial.value_sell) *
                   100
                 ).toFixed(2)} %`}
               />

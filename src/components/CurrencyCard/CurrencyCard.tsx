@@ -1,12 +1,6 @@
-import {
-  Stack,
-  Box,
-  Heading,
-  Stat,
-  StatLabel,
-  StatNumber,
-} from '@chakra-ui/react';
+import { Stack, Box, Heading } from '@chakra-ui/react';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
+import CurrencyStat from '../CurrencyStat/CurrencyStat';
 
 export interface Currency {
   value_buy: string;
@@ -42,23 +36,9 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         </Heading>
       </Box>
       <Stack mt={4} spacing={4} fontSize="2xl" w="100%">
-        <Stat
-          borderTopRadius="md"
-          py="2.5"
-          overflow="hidden"
-          bgColor={bgTertiary}
-        >
-          <StatLabel>Compra</StatLabel>
-          <StatNumber>ARS {buy}</StatNumber>
-        </Stat>
-        <Stat borderRadius="md" py="2.5" bgColor={bgTertiary}>
-          <StatLabel>Promedio</StatLabel>
-          <StatNumber>ARS {avg}</StatNumber>
-        </Stat>
-        <Stat borderBottomRadius="md" py="2.5" bgColor={bgTertiary}>
-          <StatLabel>Venta</StatLabel>
-          <StatNumber>ARS {sell}</StatNumber>
-        </Stat>
+        <CurrencyStat value={buy} bgColor={bgTertiary} label="Compra" />
+        <CurrencyStat value={avg} bgColor={bgTertiary} label="Promedio" />
+        <CurrencyStat value={sell} bgColor={bgTertiary} label="Venta" />
       </Stack>
     </Box>
   );
