@@ -55,7 +55,7 @@ export const ArgAnalytics = () => {
             >
               <Card
                 title="Riesgo País"
-                value={`${Number(riskInfo.value).toFixed(2)} %`}
+                value={`${Number(riskInfo.value).toFixed(2)} Puntos`}
               />
               <Card
                 title="Brecha Cambiaria"

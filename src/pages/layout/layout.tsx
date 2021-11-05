@@ -31,6 +31,7 @@ const Layout = ({ children }: any) => {
         borderTop="1px solid"
         borderColor={borderColor}
         mt="20"
+        minHeight="100vH"
       >
         {children}
       </Flex>
