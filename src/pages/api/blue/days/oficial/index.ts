@@ -1,8 +1,8 @@
 import { config } from '@/config/config';
-import { historyCurrencyData } from '@/types/Blue';
+import { HistoryCurrencyData } from '@/types/Blue';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-async function getCurrencyData(url: string): Promise<historyCurrencyData[]> {
+async function getCurrencyData(url: string): Promise<HistoryCurrencyData[]> {
   const latest = await fetch(url);
   return latest.json();
 }
