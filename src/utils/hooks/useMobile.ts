@@ -6,5 +6,5 @@ export const useMobile = <T>(
 ) => {
   const [mobile] = useMediaQuery(media);
   const isMobile = mobile ? mobileStyle : notMobileStyle;
-  return { isMobile, mobile };
+  return [isMobile, mobile];
 };
