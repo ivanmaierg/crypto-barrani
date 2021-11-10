@@ -7,7 +7,7 @@ import { useColorModeValues } from '../../utils/hooks/useColorModeValues';
 export const Header = () => {
   const { borderColor } = useColorModeValues();
 
-  const { mobile } = useMobile(`(max-width: 480px`, []);
+  const [, mobile] = useMobile(`(max-width: 480px`, []);
   return (
     <Flex
       flexDirection="row"

@@ -49,7 +49,7 @@ const RoutesComponents: React.FC<{ routes: Routes; isOnHambuguer: boolean }> =
   };
 
 export const NavBar: React.FC = () => {
-  const { mobile } = useMobile(`(max-width: 480px`, []);
+  const [, mobile] = useMobile(`(max-width: 480px`, []);
 
   const route1: Route = {
     href: `/arg`,

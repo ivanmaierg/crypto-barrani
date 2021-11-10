@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { historyCurrencyData } from '@/types/Blue';
+import { HistoryCurrencyData } from '@/types/Blue';
 
 const baseUrl = `http://localhost:3000/api/`;
 
@@ -23,7 +23,7 @@ export const blueApi = createApi({
     getDaysByDid: builder.query({
       query: (did) => createRequest(`/blue/days/${did}`),
     }),
-    getOficialHistory: builder.query<historyCurrencyData[], void>({
+    getOficialHistory: builder.query<HistoryCurrencyData[], void>({
       query: () => createRequest(`/blue/days/oficial`),
     }),
     getBlueHistory: builder.query<historyCurrencyData[], void>({

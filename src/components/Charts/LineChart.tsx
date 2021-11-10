@@ -12,12 +12,12 @@ import {
 } from '@chakra-ui/react';
 import React, { useReducer } from 'react';
 import { Line } from 'react-chartjs-2';
-import { historyCurrencyData } from '@/types/Blue';
+import { HistoryCurrencyData } from '@/types/Blue';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 
 export interface dataCurrency {
-  blueHistory: historyCurrencyData[];
-  oficialHistory: historyCurrencyData[];
+  blueHistory: HistoryCurrencyData[];
+  oficialHistory: HistoryCurrencyData[];
 }
 interface Action {
   type: ActionTypeDays;

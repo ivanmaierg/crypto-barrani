@@ -22,7 +22,7 @@ export const Card: React.FC<{ title: string; value: string }> = ({
       maxWidth="100%"
       backgroundColor={bgTertiary}
     >
-      <Heading as="h2" size="xl" fontSize="3xl">
+      <Heading as="h2" fontSize={{ base: `2xl`, md: `3xl` }}>
         {title}
       </Heading>
       <Stack spacing={2} isInline justifyContent="center">
