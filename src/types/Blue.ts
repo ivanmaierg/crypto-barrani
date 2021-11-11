@@ -1,10 +1,10 @@
 export interface CurrencyData {
-  value_avg: string;
-  value_sell: string;
-  value_but: string;
+  value_avg: number;
+  value_sell: number;
+  value_but: number;
 }
 
-export interface historyCurrencyData {
+export interface HistoryCurrencyData {
   date: string;
   source: string;
   value_sell: number;
@@ -19,7 +19,19 @@ export interface BlueResponse {
   last_update: string;
 }
 
-export interface countryRisk {
-  fecha: string;
-  valor: number;
+export interface CountryRisk {
+  date: string;
+  value: number;
+}
+
+export interface BlueData {
+  usd: {
+    oficial: CurrencyData;
+    blue: CurrencyData;
+  };
+  eur: {
+    oficial: CurrencyData;
+    blue: CurrencyData;
+  };
+  lastUpdate: string;
 }

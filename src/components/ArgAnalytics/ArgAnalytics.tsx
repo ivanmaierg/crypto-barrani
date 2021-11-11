@@ -1,33 +1,22 @@
-import {
-  useGetBlueQuery,
-  useGetRiskQuery,
-  useGetBlueHistoryQuery,
-  useGetOficialHistoryQuery,
-} from '@/services/blueApi';
+import { getHistory, getLatestBlue, getRisk } from '@/utils/getData';
 import { useMobile } from '@/utils/hooks/useMobile';
-import { Flex, Text, Heading, Stack, StackDirection } from '@chakra-ui/react';
-import { Card } from '../Card/Card';
+import { Flex, Text, Heading, StackDirection } from '@chakra-ui/react';
+import useSWR from 'swr';
+
 import { LineChart } from '../Charts/LineChart';
 import { Currency } from '../Currency/Currency';
+import RiskAndBlueInfo from '../RiskAndBlueInfo/RiskAndBlueInfo';
 
 export const ArgAnalytics = () => {
-  const { data: riskInfo, isFetching: isFetchingRisk } = useGetRiskQuery(``);
-  const { data: blueInfo, isFetching: isFetchingBlue } = useGetBlueQuery(``);
-  const { data: currencyBlueDays, isFetching: isFetchingCurrencyBlueDays } =
-    useGetBlueHistoryQuery();
+  const { data: blueInfo } = useSWR(`api/blue`, getLatestBlue);
 
-  const {
-    data: currencyOficialDays,
-    isFetching: isFetchingCurrencyOficialDays,
-  } = useGetOficialHistoryQuery();
-  const isFetchingCurrency: boolean =
-    !isFetchingCurrencyBlueDays && !isFetchingCurrencyOficialDays;
-  const isFetchingBlueAndRisk: boolean = !isFetchingBlue && !isFetchingRisk;
-
-  const { isMobile, mobile } = useMobile<StackDirection>(`(max-width: 480px`, [
-    `column`,
-    `row`,
-  ]);
+  const { data: riskInfo } = useSWR(`api/blue/risk`, getRisk);
+  const { data: currencyOficialDays } = useSWR(`/oficial`, getHistory);
+  const { data: currencyBlueDays } = useSWR(`/blue`, getHistory);
+  const [, mobile] = useMobile<StackDirection>(
+    `(min-width: 10px) and (max-width: 480px)`,
+    [`column`, `row`],
+  );
   return (
     <Flex width="100%" alignItems="center" flexDirection="column">
       <Flex
@@ -44,32 +33,13 @@ export const ArgAnalytics = () => {
             evolución y riesgo país.
           </Text>
         </Flex>
-        {isFetchingBlueAndRisk && (
-          <Flex w="100%" direction="column">
-            <Currency blueInfo={blueInfo} />
-            <Stack
-              w="100%"
-              spacing={4}
-              direction={isMobile}
-              transition="all 2ms"
-            >
-              <Card
-                title="Riesgo País"
-                value={`${Number(riskInfo.value).toFixed(2)} Puntos`}
-              />
-              <Card
-                title="Brecha Cambiaria"
-                value={`${(
-                  ((blueInfo.usd.blue.value_sell -
-                    blueInfo.usd.oficial.value_sell) /
-                    blueInfo.usd.oficial.value_sell) *
-                  100
-                ).toFixed(2)} %`}
-              />
-            </Stack>
-          </Flex>
-        )}
-        {!mobile && isFetchingCurrency && (
+        <Flex w="100%" direction="column">
+          {blueInfo && <Currency blueInfo={blueInfo} />}
+          {riskInfo && blueInfo && (
+            <RiskAndBlueInfo riskInfo={riskInfo} blueInfo={blueInfo} />
+          )}
+        </Flex>
+        {!mobile && currencyBlueDays && currencyOficialDays && (
           <LineChart
             blueHistory={currencyBlueDays || []}
             oficialHistory={currencyOficialDays || []}
