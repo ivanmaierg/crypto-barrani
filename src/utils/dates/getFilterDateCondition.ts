@@ -1,4 +1,4 @@
-import { historyCurrencyData } from '@/types/Blue';
+import { HistoryCurrencyData } from '@/types/Blue';
 import { ActionNumberOfDaysState } from '../reducers/numberOfDaysReducer';
 
 export const getFilterDateCondition = (
@@ -11,41 +11,47 @@ export const getFilterDateCondition = (
   switch (period) {
     case `monthly`:
       return {
-        filterCb: (day: historyCurrencyData) => {
+        filterCb: (day: HistoryCurrencyData) => {
           const { date } = day;
-          const [yyyy, mm] = date.split(`-`).map((item) => Number(item));
+          const [yyyy, mm] = date
+            .split(`-`)
+            .map((item: string) => Number(item));
           return mm > previousMonth && yyyy === thisYear;
         },
       };
     case `yearly`:
       return {
-        filterCb: (day: historyCurrencyData) => {
+        filterCb: (day: HistoryCurrencyData) => {
           const { date } = day;
-          const [yyyy] = date.split(`-`).map((item) => Number(item));
+          const [yyyy] = date.split(`-`).map((item: string) => Number(item));
           return yyyy === thisYear;
         },
       };
     case `quartearly`:
       return {
-        filterCb: (day: historyCurrencyData) => {
+        filterCb: (day: HistoryCurrencyData) => {
           const { date } = day;
-          const [yyyy, , dd] = date.split(`-`).map((item) => Number(item));
+          const [yyyy, , dd] = date
+            .split(`-`)
+            .map((item: string) => Number(item));
           return dd === 1 && yyyy > thisYear - 4;
         },
       };
     case `all`:
       return {
-        filterCb: (day: historyCurrencyData) => {
+        filterCb: (day: HistoryCurrencyData) => {
           const { date } = day;
-          const [, , dd] = date.split(`-`).map((item) => Number(item));
+          const [, , dd] = date.split(`-`).map((item: string) => Number(item));
           return dd === 1;
         },
       };
     default:
       return {
-        filterCb: (day: historyCurrencyData) => {
+        filterCb: (day: HistoryCurrencyData) => {
           const { date } = day;
-          const [yyyy, mm, dd] = date.split(`-`).map((item) => Number(item));
+          const [yyyy, mm, dd] = date
+            .split(`-`)
+            .map((item: string) => Number(item));
           return dd === 1 && mm > previousMonth && yyyy === thisYear;
         },
       };

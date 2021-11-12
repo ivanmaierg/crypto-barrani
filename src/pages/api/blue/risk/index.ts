@@ -1,4 +1,4 @@
-import { countryRisk } from '@/types/Blue';
+import { CountryRisk } from '@/types/Blue';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export interface ApiResponse {
@@ -14,7 +14,7 @@ export default async function handler(
     const risk = await fetch(
       `https://api-dolar-argentina.herokuapp.com/api/riesgopais`,
     );
-    const data: countryRisk = await risk.json();
+    const data: any = await risk.json();
     const apiResponse: ApiResponse = {
       date: data.fecha,
       value: data.valor,
