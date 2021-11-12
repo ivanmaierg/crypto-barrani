@@ -55,18 +55,18 @@ export const NavBar: React.FC = () => {
     href: `/arg`,
     children: `Arg`,
   };
-  const route2: Route = {
-    href: `/news`,
-    children: `News`,
-  };
+  // const route2: Route = {
+  //   href: `/news`,
+  //   children: `News`,
+  // };
 
-  const route3: Route = {
-    href: `/crypto`,
-    children: `Crypto`,
-  };
+  // const route3: Route = {
+  //   href: `/crypto`,
+  //   children: `Crypto`,
+  // };
 
-  const routes: Routes = [route1, route2, route3];
-
+  // const routes: Routes = [route1, route2, route3];
+  const routes: Routes = [route1];
   return (
     <>
       {mobile ? (
