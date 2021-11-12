@@ -1,15 +1,11 @@
-import { Provider } from 'react-redux';
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { myTheme } from '@/theme/theme';
-import { store } from '@/app/store';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <ChakraProvider theme={myTheme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </Provider>
+    <ChakraProvider theme={myTheme}>
+      <Component {...pageProps} />
+    </ChakraProvider>
   );
 }
