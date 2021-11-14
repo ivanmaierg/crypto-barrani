@@ -9,6 +9,7 @@ import {
   FormLabel,
   Select,
   Heading,
+  Skeleton,
 } from '@chakra-ui/react';
 import React, { useReducer } from 'react';
 import { Line } from 'react-chartjs-2';
@@ -16,8 +17,8 @@ import { HistoryCurrencyData } from '@/types/Blue';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 
 export interface dataCurrency {
-  blueHistory: HistoryCurrencyData[];
-  oficialHistory: HistoryCurrencyData[];
+  blueHistory?: HistoryCurrencyData[];
+  oficialHistory?: HistoryCurrencyData[];
 }
 interface Action {
   type: ActionTypeDays;
@@ -34,8 +35,8 @@ export const LineChart: React.FC<LineChartProps> = ({
   });
   const { bgTertiary } = useColorModeValues();
   const { filterCb } = getFilterDateCondition(historyDays);
-  const blueData = blueHistory.filter((day) => filterCb(day));
-  const oficialData = oficialHistory.filter((day) => filterCb(day));
+  const blueData = blueHistory?.filter((day) => filterCb(day)) || [];
+  const oficialData = oficialHistory?.filter((day) => filterCb(day)) || [];
   const data = {
     labels: blueData.map((day: any) => day.date),
     datasets: [
@@ -62,34 +63,36 @@ export const LineChart: React.FC<LineChartProps> = ({
     e.preventDefault();
   };
   return (
-    <Flex
-      my="20"
-      w="100%"
-      h="auto"
-      direction="column"
-      bg={bgTertiary}
-      p="5"
-      rounded="5"
-    >
-      <FormControl display="flex" justifyContent="start" mb="2">
-        <FormLabel>
-          <Select
-            name="quantity"
-            onChange={(e) => {
-              handleOnSelect(e);
-            }}
-          >
-            <option value="monthly">Mensual</option>
-            <option value="yearly">Anual</option>
-            <option value="quartearly">4 años</option>
-            <option value="all">Todo</option>
-          </Select>
-        </FormLabel>
-      </FormControl>
-      <Flex flexDirection="column" w="100%">
-        <Heading>Información histórica</Heading>
-        <Line data={data} />
+    <Skeleton isLoaded={!!blueHistory && !!oficialHistory} w="100%" my="20">
+      <Flex
+        my="20"
+        w="100%"
+        h="auto"
+        direction="column"
+        bg={bgTertiary}
+        p="5"
+        rounded="5"
+      >
+        <FormControl display="flex" justifyContent="start" mb="2">
+          <FormLabel>
+            <Select
+              name="quantity"
+              onChange={(e) => {
+                handleOnSelect(e);
+              }}
+            >
+              <option value="monthly">Mensual</option>
+              <option value="yearly">Anual</option>
+              <option value="quartearly">4 años</option>
+              <option value="all">Todo</option>
+            </Select>
+          </FormLabel>
+        </FormControl>
+        <Flex flexDirection="column" w="100%">
+          <Heading>Información histórica</Heading>
+          <Line data={data} />
+        </Flex>
       </Flex>
-    </Flex>
+    </Skeleton>
   );
 };

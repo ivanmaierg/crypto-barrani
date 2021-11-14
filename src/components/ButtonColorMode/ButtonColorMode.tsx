@@ -6,8 +6,12 @@ const ButtonColorMode: React.FC = () => {
   const textColor = useColorModeValue(`dark.textPrimary`, `light.textPrimary`);
   const { colorMode, toggleColorMode } = useColorMode();
   if (colorMode === `dark`)
-    return <SunIcon color={textColor} onClick={toggleColorMode} />;
-  return <MoonIcon color={textColor} onClick={toggleColorMode} />;
+    return (
+      <SunIcon cursor="pointer" color={textColor} onClick={toggleColorMode} />
+    );
+  return (
+    <MoonIcon cursor="pointer" color={textColor} onClick={toggleColorMode} />
+  );
 };
 
 export default ButtonColorMode;

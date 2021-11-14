@@ -34,15 +34,13 @@ export const ArgAnalytics = () => {
           </Text>
         </Flex>
         <Flex w="100%" direction="column">
-          {blueInfo && <Currency blueInfo={blueInfo} />}
-          {riskInfo && blueInfo && (
-            <RiskAndBlueInfo riskInfo={riskInfo} blueInfo={blueInfo} />
-          )}
+          <Currency blueInfo={blueInfo} />
+          <RiskAndBlueInfo riskInfo={riskInfo} blueInfo={blueInfo} />
         </Flex>
-        {!mobile && currencyBlueDays && currencyOficialDays && (
+        {!mobile && (
           <LineChart
-            blueHistory={currencyBlueDays || []}
-            oficialHistory={currencyOficialDays || []}
+            blueHistory={currencyBlueDays}
+            oficialHistory={currencyOficialDays}
           />
         )}
       </Flex>
