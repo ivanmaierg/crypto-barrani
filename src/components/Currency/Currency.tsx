@@ -6,6 +6,7 @@ import {
   Stack,
   Text,
   StackDirection,
+  Skeleton,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { CurrencyCard } from '../CurrencyCard/CurrencyCard';
@@ -19,8 +20,9 @@ export const Currency = ({ blueInfo }: any) => {
   const handleToogleCurrency = () => {
     setToogle(!toogle);
   };
-  const getCurrency = () => (toogle ? blueInfo.eur : blueInfo.usd);
-
+  const getCurrency = () => (toogle ? blueInfo?.eur : blueInfo?.usd);
+  const { oficial } = getCurrency() || {};
+  const { blue } = getCurrency() || {};
   return (
     <Flex
       flexDirection="column"
@@ -34,17 +36,21 @@ export const Currency = ({ blueInfo }: any) => {
         alignItems="center"
         width="100%"
       >
-        <Text fontSize="3xl" fontWeight="bold">
-          {toogle ? `Eur` : `Usd`}
-        </Text>
-        <Button alignSelf="flex-end" onClick={handleToogleCurrency}>
-          {toogle ? `Eur` : `Usd`}
-        </Button>
+        <Skeleton isLoaded={!!oficial && !!blue}>
+          <Text fontSize="3xl" fontWeight="bold">
+            {toogle ? `Eur` : `Usd`}
+          </Text>
+        </Skeleton>
+        <Skeleton isLoaded={!!oficial && !!blue}>
+          <Button alignSelf="flex-end" onClick={handleToogleCurrency}>
+            {toogle ? `Eur` : `Usd`}
+          </Button>
+        </Skeleton>
       </Flex>
 
       <Stack w="100%" direction={isMobile} spacing={4} mt="1rem">
-        <CurrencyCard title="Oficial" currency={getCurrency().oficial} />
-        <CurrencyCard title="Blue" currency={getCurrency().blue} />
+        <CurrencyCard title="Oficial" currency={oficial} />
+        <CurrencyCard title="Blue" currency={blue} />
       </Stack>
       <Box m={2}>
         <Text fontWeight="bold">Last Update: 10/09/2021</Text>

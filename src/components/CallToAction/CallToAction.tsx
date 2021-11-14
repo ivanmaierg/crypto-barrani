@@ -1,6 +1,13 @@
 import React from 'react';
-
-import { Box, Heading, Container, Text, Button, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Container,
+  Text,
+  Button,
+  Link,
+  Stack,
+} from '@chakra-ui/react';
 
 export const CallToAction = () => (
   <Container maxW="3xl">
@@ -31,17 +38,19 @@ export const CallToAction = () => (
         alignSelf="center"
         position="relative"
       >
-        <Button
-          colorScheme="green"
-          bg="green.400"
-          rounded="full"
-          px={6}
-          _hover={{
-            bg: `green.500`,
-          }}
-        >
-          Aprendé Mas
-        </Button>
+        <Link href="/arg">
+          <Button
+            colorScheme="green"
+            bg="green.400"
+            rounded="full"
+            px={6}
+            _hover={{
+              bg: `green.500`,
+            }}
+          >
+            Aprendé Mas
+          </Button>
+        </Link>
       </Stack>
     </Stack>
   </Container>

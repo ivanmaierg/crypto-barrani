@@ -1,4 +1,4 @@
-import { Stack, Box, Heading } from '@chakra-ui/react';
+import { Stack, Box, Heading, Skeleton } from '@chakra-ui/react';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import CurrencyStat from '../CurrencyStat/CurrencyStat';
 
@@ -17,7 +17,8 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
   title,
 }: CurrencyCardProps) => {
   const { bgTertiary } = useColorModeValues();
-  const { value_avg: avg, value_sell: sell, value_buy: buy } = currency;
+  const { value_avg: avg, value_sell: sell, value_buy: buy } = currency || {};
+  const isLoaded = !!currency;
   return (
     <Box
       minWidth="10rem"
@@ -36,9 +37,15 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         </Heading>
       </Box>
       <Stack mt={4} spacing={4} fontSize="2xl" w="100%">
-        <CurrencyStat value={buy} bgColor={bgTertiary} label="Compra" />
-        <CurrencyStat value={avg} bgColor={bgTertiary} label="Promedio" />
-        <CurrencyStat value={sell} bgColor={bgTertiary} label="Venta" />
+        <Skeleton isLoaded={isLoaded}>
+          <CurrencyStat value={buy} bgColor={bgTertiary} label="Compra" />
+        </Skeleton>
+        <Skeleton isLoaded={isLoaded}>
+          <CurrencyStat value={avg} bgColor={bgTertiary} label="Promedio" />
+        </Skeleton>
+        <Skeleton isLoaded={isLoaded}>
+          <CurrencyStat value={sell} bgColor={bgTertiary} label="Venta" />
+        </Skeleton>
       </Stack>
     </Box>
   );

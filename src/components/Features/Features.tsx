@@ -29,7 +29,14 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
 
 export default function Features() {
   return (
-    <Box p={4} maxW="80%">
+    <Box
+      p={4}
+      maxW="80%"
+      margin="auto"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         <Feature
           icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
