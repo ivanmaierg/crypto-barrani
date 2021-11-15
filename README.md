@@ -11,12 +11,6 @@ A TypeScript starter for Next.js that includes all you need to build amazing pro
 - 👷 **PR Workflow** - Run Type Check & Linters on pull requests
 - 🗂 **Absolute import** - Import folders and files using the `@` prefix
 
-## 🚀 Getting started
-
-```
-npx create-next-app ts-next -e https://github.com/jpedroschmitz/typescript-nextjs-starter
-```
-
 
 To view the project open `http://localhost:3000`.
 
