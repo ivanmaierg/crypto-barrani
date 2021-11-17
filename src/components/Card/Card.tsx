@@ -2,7 +2,7 @@ import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import { Box, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
-export const Card: React.FC<{ title?: string; value?: string }> = ({
+export const Card: React.FC<{ title?: string; value?: string,textFooter?:string }> = ({
   title,
   value,
 }) => {
@@ -48,7 +48,7 @@ export const Card: React.FC<{ title?: string; value?: string }> = ({
           </Text>
         </Box>
       </Stack>
-      <Text color={textSecondary}>Oficial - Blue</Text>
+      {textFooter && <Text color={textSecondary}>{textFooter}</Text>}
     </Box>
   );
 };
