@@ -1,4 +1,3 @@
-import { CountryRisk } from '@/types/Blue';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export interface ApiResponse {
