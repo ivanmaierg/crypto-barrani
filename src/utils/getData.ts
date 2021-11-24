@@ -36,8 +36,8 @@ export async function getHistory(url: string): Promise<HistoryCurrencyData[]> {
   return latest.json();
 }
 
-export async function getCoins(): Promise<any> {
-  const latest = await fetch(`api/crypto/coins`);
+export async function getCoins(url: string): Promise<any> {
+  const latest = await fetch(url);
   if (!latest.ok) {
     const error: any = new Error(`An error occurred while fetching the data.`);
     // Attach extra info to the error object.

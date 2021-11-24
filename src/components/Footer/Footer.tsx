@@ -32,7 +32,6 @@ export function Footer() {
           spacing={8}
         >
           <Stack align="flex-start">
-            <ListHeader>Product</ListHeader>
             <Link href="/overview">Overview</Link>
             <Stack direction="row" align="center" spacing={2}>
               <Link href="/features">Features</Link>
@@ -48,12 +47,10 @@ export function Footer() {
             <Link href="/tutorials">Tutorials</Link>
           </Stack>
           <Stack align="flex-start">
-            <ListHeader>Company</ListHeader>
             <Link>About Us</Link>
             <Link href="/contact">Contact Us</Link>
           </Stack>
           <Stack align="flex-start">
-            <ListHeader>Legal</ListHeader>
             <Link href="/cookies">Cookies Policy</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>

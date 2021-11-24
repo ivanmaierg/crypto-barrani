@@ -49,8 +49,8 @@ export const Currency = ({ blueInfo }: any) => {
       </Flex>
 
       <Stack w="100%" direction={isMobile} spacing={4} mt="1rem">
-        <CurrencyCard title="Oficial" currency={oficial}  textSecondary='Oficial - Blue' />
-        <CurrencyCard title="Blue" currency={blue} textSecondary='Oficial - Blue' />
+        <CurrencyCard title="Oficial" currency={oficial} />
+        <CurrencyCard title="Blue" currency={blue} />
       </Stack>
       <Box m={2}>
         <Text fontWeight="bold">Last Update: 10/09/2021</Text>

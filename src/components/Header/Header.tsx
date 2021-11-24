@@ -32,7 +32,7 @@ export const Header = () => {
         >
           <h1>Crypto Barrani</h1>
         </Flex>
-        <Flex display="flex" aligItems="center" justifyContent="center">
+        <Flex display="flex" alignItems="center" justifyContent="center">
           <NavBar />
         </Flex>
       </Box>

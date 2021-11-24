@@ -80,6 +80,8 @@ export const LineChart: React.FC<LineChartProps> = ({
               onChange={(e) => {
                 handleOnSelect(e);
               }}
+              id="time"
+              instanceId="time"
             >
               <option value="monthly">Mensual</option>
               <option value="yearly">Anual</option>

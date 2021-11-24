@@ -11,7 +11,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head title="Crypto Barrani" />
+        <Head />
         <body>
           <ColorModeScript initialColorMode={myTheme.config.initialColorMode} />
           <Main />
