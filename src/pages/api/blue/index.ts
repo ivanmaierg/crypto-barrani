@@ -6,7 +6,7 @@ async function getCurrencyData(url: string): Promise<BlueResponse> {
   return latest.json();
 }
 
-export default async function handler(
+export default async function handleBlue(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
@@ -16,7 +16,8 @@ export default async function handler(
     );
     const { oficial, blue, oficial_euro, blue_euro, last_update } = latest;
 
-    res.status(200).send({
+    res.status(200);
+    res.send({
       usd: {
         oficial,
         blue,

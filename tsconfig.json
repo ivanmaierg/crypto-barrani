@@ -33,6 +33,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "server.js", "src/hooks/useThemeStyles.js"  ]
+    "**/*.tsx",
+    "server.js",
+    "src/hooks/useThemeStyles.js"
+  ]
 }
