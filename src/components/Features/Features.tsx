@@ -9,7 +9,7 @@ interface FeatureProps {
 }
 
 const Feature = ({ title, text, icon }: FeatureProps) => (
-  <Stack>
+  <Stack textAlign="center" w={{ lg: `100%`, md: `80%` }}>
     <Flex
       w={16}
       h={16}
@@ -18,11 +18,13 @@ const Feature = ({ title, text, icon }: FeatureProps) => (
       color="white"
       rounded="full"
       bg="gray.100"
-      mb={1}
+      m="auto"
     >
       {icon}
     </Flex>
-    <Text fontWeight={600}>{title}</Text>
+    <Text my="5rem" fontWeight={600}>
+      {title}
+    </Text>
     <Text>{text}</Text>
   </Stack>
 );
