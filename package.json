@@ -14,7 +14,6 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test":"jest",
     "proxy": "node proxy/server.js ",
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
@@ -22,8 +21,15 @@
     "postinstall": "husky install",
     "commit": "cz",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress":"./node_modules/.bin/cypress open",
+    "test":"npm run dev & npm run cypress"
   },
+  "eslintConfig": {
+  "extends": [
+    "plugin:cypress/recommended"
+  ]
+},
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "yarn lint --fix",
@@ -40,6 +46,7 @@
     "@marcius-capital/fonts": "1.0.2",
     "@types/express": "4.17.13",
     "chart.js": "3.6.0",
+    "cypress": "9.1.0",
     "express": "4.17.1",
     "flat-color-icons": "1.1.0",
     "framer-motion": "4.1.17",
@@ -55,11 +62,6 @@
     "@babel/core": "^7.15.5",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "@testing-library/dom": "8.11.1",
-    "@testing-library/jest-dom": "5.15.1",
-    "@testing-library/react": "12.1.2",
-    "@testing-library/user-event": "13.5.0",
-    "@types/jest": "27.0.3",
     "@types/node": "14.17.15",
     "@types/react": "17.0.21",
     "@types/react-dom": "17.0.9",
@@ -80,7 +82,6 @@
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "7.0.2",
-    "jest": "27.3.1",
     "lint-staged": "11.1.2",
     "prettier": "2.4.0",
     "typescript": "4.4.3"

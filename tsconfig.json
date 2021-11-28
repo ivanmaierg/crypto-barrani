@@ -36,5 +36,5 @@
     "**/*.tsx",
     "server.js",
     "src/hooks/useThemeStyles.js"
-  ]
+, "cypress/integration/tests/argAnalytics.test.js"  ]
 }
