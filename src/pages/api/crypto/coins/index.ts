@@ -14,12 +14,20 @@ async function getData(url: string): Promise<any[]> {
   return data.json();
 }
 
+const mapCoins = (coins: any[]) =>
+  coins.map((coin) => {
+    const { id, uuid, rank, marketCap, volume, circulatingSupply, change } =
+      coin;
+    return { id, uuid, rank, marketCap, volume, circulatingSupply, change };
+  });
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
   try {
     const coinsList = await getData(`${config.base_url_coinranking}/coins`);
+
     res.status(200).send(coinsList);
   } catch (err) {
     const error: Error = new Error(`No available`);
