@@ -27,14 +27,13 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
+   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "server.js",
-    "src/hooks/useThemeStyles.js"
-, "cypress/integration/tests/argAnalytics.test.js"  ]
+    "**/*.tsx"
+  ],
+   "exclude": [
+    "node_modules",
+    "./cypress"
+  ]
 }

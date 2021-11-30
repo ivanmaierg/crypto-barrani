@@ -22,14 +22,14 @@
     "commit": "cz",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "cypress":"./node_modules/.bin/cypress open",
-    "test":"npm run dev & npm run cypress"
+    "cypress": "./node_modules/.bin/cypress open",
+    "test": "jest"
   },
   "eslintConfig": {
-  "extends": [
-    "plugin:cypress/recommended"
-  ]
-},
+    "extends": [
+      "plugin:cypress/recommended"
+    ]
+  },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "yarn lint --fix",
@@ -62,6 +62,9 @@
     "@babel/core": "^7.15.5",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
+    "@testing-library/jest-dom": "5.15.1",
+    "@testing-library/react": "12.1.2",
+    "@types/jest": "27.0.3",
     "@types/node": "14.17.15",
     "@types/react": "17.0.21",
     "@types/react-dom": "17.0.9",
@@ -82,8 +85,10 @@
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "7.0.2",
+    "jest": "26.6.3",
     "lint-staged": "11.1.2",
     "prettier": "2.4.0",
+    "ts-jest": "^26.5.4",
     "typescript": "4.4.3"
   },
   "config": {
