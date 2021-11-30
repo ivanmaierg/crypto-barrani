@@ -20,6 +20,8 @@ export const Currency = ({ blueInfo }: any) => {
   const handleToogleCurrency = () => {
     setToogle(!toogle);
   };
+  const { lastUpdate } = blueInfo || {};
+  const date = new Date(lastUpdate);
   const getCurrency = () => (toogle ? blueInfo?.eur : blueInfo?.usd);
   const { oficial } = getCurrency() || {};
   const { blue } = getCurrency() || {};
@@ -53,7 +55,10 @@ export const Currency = ({ blueInfo }: any) => {
         <CurrencyCard title="Blue" currency={blue} />
       </Stack>
       <Box m={2}>
-        <Text fontWeight="bold">Last Update: 10/09/2021</Text>
+        <Text fontWeight="bold">
+          Last Update:{` `}
+          {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
+        </Text>
       </Box>
     </Flex>
   );
