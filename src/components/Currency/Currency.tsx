@@ -57,7 +57,7 @@ export const Currency = ({ blueInfo }: any) => {
       <Box m={2}>
         <Text fontWeight="bold">
           Last Update:{` `}
-          {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
+          {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
         </Text>
       </Box>
     </Flex>

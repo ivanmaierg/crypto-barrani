@@ -47,13 +47,13 @@ export function Footer() {
             <Link href="/tutorials">Tutorials</Link>
           </Stack>
           <Stack align="flex-start">
-            <Link>About Us</Link>
-            <Link href="/contact">Contact Us</Link>
+            <Link>Acerca de</Link>
+            <Link href="/contact">Contacto</Link>
           </Stack>
           <Stack align="flex-start">
-            <Link href="/cookies">Cookies Policy</Link>
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Service</Link>
+            <Link href="/cookies">Cookies</Link>
+            <Link href="/privacy">Privacidad</Link>
+            <Link href="/terms">Terminos de servicio</Link>
           </Stack>
         </SimpleGrid>
       </Container>
