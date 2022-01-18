@@ -36,7 +36,9 @@ export const LineChart: React.FC<LineChartProps> = ({
   const { bgTertiary } = useColorModeValues();
   const { filterCb } = getFilterDateCondition(historyDays);
   const blueData = blueHistory?.filter((day) => filterCb(day)) || [];
+
   const oficialData = oficialHistory?.filter((day) => filterCb(day)) || [];
+
   const data = {
     labels: blueData.map((day: any) => day.date),
     datasets: [

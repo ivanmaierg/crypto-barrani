@@ -1,25 +1,16 @@
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testPathIgnorePatterns: [
-    '<rootDir>/.next/',
-    '<rootDir>/node_modules/',
-    '<rootDir>/coverage',
-    '<rootDir>/dist',
-  ],
-  moduleDirectories: ['<rootDir>/node_modules', '<rootDir>/src'],
-  moduleNameMapper: {
-    '@src/(.*)': '<rootDir>/src/$1',
-    '@styles/(.*)': '<rootDir>/styles/$1',
-  },
-  coverageDirectory: 'coverage',
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-  coverageThreshold: {
-    global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0,
+  preset: "ts-jest",
+  testPathIgnorePatterns: ["<rootDir>/cypress/", "<rootDir>/.next/", "<rootDir>/node_modules/"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  collectCoverage: true,
+  globals: {
+    "ts-jest": {
+      tsconfig: "./jest/tsconfig.json",
     },
+  },
+  moduleDirectories: ["node_modules", "src"],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@public/(.*)$': '<rootDir>/public/$1',
   },
 };
