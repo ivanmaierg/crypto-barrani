@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack, Box, Heading, Skeleton } from '@chakra-ui/react';
 import { useColorModeValues } from '@/utils/hooks/useColorModeValues';
 import CurrencyStat from '../CurrencyStat/CurrencyStat';
@@ -8,7 +9,7 @@ export interface Currency {
   value_sell: string;
 }
 export interface CurrencyCardProps {
-  currency: Currency;
+  currency: Currency | undefined;
   title: string;
 }
 
@@ -38,13 +39,21 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
       </Box>
       <Stack mt={4} spacing={4} fontSize="2xl" w="100%">
         <Skeleton isLoaded={isLoaded}>
-          <CurrencyStat value={buy} bgColor={bgTertiary} label="Compra" />
+          {buy && (
+            <CurrencyStat value={buy} bgColor={bgTertiary} label="Compra" />
+          )}
+          {` `}
         </Skeleton>
         <Skeleton isLoaded={isLoaded}>
-          <CurrencyStat value={avg} bgColor={bgTertiary} label="Promedio" />
+          {avg && (
+            <CurrencyStat value={avg} bgColor={bgTertiary} label="Promedio" />
+          )}
         </Skeleton>
         <Skeleton isLoaded={isLoaded}>
-          <CurrencyStat value={sell} bgColor={bgTertiary} label="Venta" />
+          {sell && (
+            <CurrencyStat value={sell} bgColor={bgTertiary} label="Venta" />
+          )}
+          {` `}
         </Skeleton>
       </Stack>
     </Box>

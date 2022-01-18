@@ -1,7 +1,7 @@
 import { Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React, { ReactElement } from 'react';
 
-interface Props {
+export interface Props {
   bgColor: string;
   label: string;
   value: string | number;
