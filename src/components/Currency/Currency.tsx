@@ -55,10 +55,12 @@ export const Currency = ({ blueInfo }: any) => {
         <CurrencyCard title="Blue" currency={blue} />
       </Stack>
       <Box m={2}>
-        <Text fontWeight="bold">
-          Last Update:{` `}
-          {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
-        </Text>
+        <Skeleton isLoaded={lastUpdate}>
+          <Text fontWeight="bold">
+            Last Update:{` `}
+            {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
+          </Text>
+        </Skeleton>
       </Box>
     </Flex>
   );
