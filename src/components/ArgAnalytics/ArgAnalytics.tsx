@@ -9,7 +9,6 @@ import RiskAndBlueInfo from '../RiskAndBlueInfo/RiskAndBlueInfo';
 
 export const ArgAnalytics = () => {
   const { data: blueInfo } = useSWR(`api/blue`, getLatestBlue);
-  console.log(blueInfo);
   const { data: riskInfo } = useSWR(`api/blue/risk`, getRisk);
   const { data: currencyOficialDays } = useSWR(`/oficial`, getHistory);
   const { data: currencyBlueDays } = useSWR(`/blue`, getHistory);

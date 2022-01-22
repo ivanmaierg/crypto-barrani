@@ -65,7 +65,7 @@ export const LineChart: React.FC<LineChartProps> = ({
     e.preventDefault();
   };
   return (
-    <Skeleton isLoaded={!!blueHistory && !!oficialHistory} w="100%" my="20">
+    <Skeleton isLoaded={!!blueHistory && !!oficialHistory} w="100%" my="5">
       <Flex
         my="20"
         w="100%"
